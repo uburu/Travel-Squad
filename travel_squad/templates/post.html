@@ -1,0 +1,81 @@
+<!doctype>
+<html>
+	<head>
+		<meta chrset="utf-8">
+		<title>Travel Squad</title>
+
+		<link href="https://milo.bootlab.io/dist/css/milo.css" rel="stylesheet">
+		<link rel="stylesheet" href="styles/post.css">
+
+        <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<main role="main" class="logo rellax col-lg-8" data-rellax-speed="4">
+				<h1 class="title animated fadeInUp">Тайное</h1>
+				<h2 class="title animated fadeInUp">место</h2>
+			</main>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<img src="photo/7.jpg" class="img-fluid rellax" data-rellax-speed="8" data-rellax-percentage="-0.1">
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+<!-- 				<div class="col-lg-8 mx-auto">
+					<p class="rellax" data-rellax-speed="5" data-rellax-percentage="-0.5" style="font-size: 100px; color: #d5d5d5;">"Самое главное себя не потерять"</p>
+				</div> -->
+				<div class="col-lg-5 mr-auto">
+<!-- 					<h1 class="place ml-5" style="z-index: -100; font-size: 100px; color: #f0f0f0;">Камчатский<br>край</h1> -->
+					<h1 class="place rellax ml-5" data-rellax-speed="-4" data-rellax-percentage="0.5" style="z-index: -100; font-size: 100px; color: #f0f0f0;">Камчатский<br>край</h1>
+				</div>
+				<div class="col-lg-5 ml-auto">
+<!-- 					<h3 class="coordinates ml-auto" style="font-size: 35px; color:#451fe7; z-index: -100;">53°02′39″N 158°39′02″W</h3> -->
+					<img src="photo/compass.png" class="rellax img-fluid" data-rellax-speed="5" data-rellax-percentage="0.1">
+					<h3 class="coordinates rellax ml-auto" data-rellax-speed="8" data-rellax-percentage="0.1" style="font-size: 35px; color:#451fe7; z-index: -100;">53°02′39″N 158°39′02″W</h3>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto mt-5">
+					<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare dui ut nunc placerat gravida. Donec in tempor lectus, finibus venenatis eros. Morbi vitae ante vel ante laoreet tempor. Aliquam erat volutpat. Vestibulum quis lacinia orci, vel tincidunt risus. Maecenas finibus leo nunc. Maecenas faucibus nisi non posuere bibendum. Donec sit amet dolor ultricies, mattis arcu id, vehicula tellus. Pellentesque eget nunc sed risus tempor hendrerit. Nunc fermentum, eros a volutpat suscipit, tellus arcu imperdiet eros, in condimentum lectus magna ut tortor. Morbi maximus condimentum est, a volutpat nisi tristique vitae.
+
+							Aliquam vulputate justo fermentum, suscipit mi at, tempor risus. Proin id porttitor elit, bibendum sagittis felis. Duis interdum odio non pulvinar auctor. Nulla sed suscipit erat. Sed tellus ipsum, ornare sed sagittis vitae, euismod sit amet ipsum. Sed tincidunt faucibus maximus. Praesent eget euismod turpis. Vivamus ornare posuere laoreet. Nullam pellentesque magna at leo elementum, sed imperdiet lacus tempus. Vivamus pulvinar nec nisl in suscipit. Cras pharetra sem et quam venenatis, vel vehicula mauris luctus.
+
+							In eget semper lacus. Pellentesque id purus et nisl pulvinar tempus vel non felis. Sed a gravida eros. Nulla auctor felis vitae neque lobortis congue. Integer ut dui vel lacus dignissim pretium pellentesque eu erat. Donec et facilisis tellus. Etiam mattis malesuada rhoncus. Mauris quis purus interdum, facilisis enim vel, condimentum dolor.
+
+							Curabitur non ligula quis libero congue dapibus in sit amet urna. Praesent tincidunt commodo neque eu varius. Morbi hendrerit nulla a sem aliquet eleifend. Duis imperdiet dolor a rhoncus volutpat. Praesent in leo nulla. Maecenas porta porta nisl, non gravida purus luctus eget. Maecenas nulla magna, faucibus condimentum sodales a, porttitor et lacus. Nam aliquam neque quis metus accumsan fringilla. Suspendisse nec ultrices tellus. Morbi ut nulla suscipit, scelerisque tellus non, viverra nibh. Etiam vehicula et sapien ut condimentum.
+
+							Quisque condimentum ligula quis pulvinar ornare. Curabitur non orci diam. Pellentesque tempus imperdiet justo eu mollis. Nullam convallis in sem non dictum. Etiam a augue leo. Aenean id ipsum in nulla eleifend bibendum quis id tellus. Suspendisse efficitur pulvinar imperdiet.
+					</p>
+				</div>
+			</div>
+		</div>
+		</div>
+		<script type="text/javascript" src="js/rellax.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+    		var rellax = new Rellax('.rellax', {
+      		});
+
+      		var wnd = $(window), opacityControlPlace = $('.place'), opacityControlCoord = $('.coordinates');
+    		wnd.scroll(function() {
+    			var top = wnd.scrollTop()
+    			var opacityPlace = top > 500 ? 1 : top * 2 / 1000;
+    			var opacityCoord = top > 500 ? 1 : top * 2 / 1000;
+    			console.log(top);
+    			// opacityCoord = top > 800 ? top * 2 / 1000 : top * 2 / 2000;
+
+    			opacityControlPlace.css('opacity', opacityPlace);
+    			opacityControlCoord.css('opacity', opacityCoord);
+    		});
+    	</script>
+	</body>
+</html>
