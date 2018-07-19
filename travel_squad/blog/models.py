@@ -12,9 +12,12 @@ class Post(models.Model):
         ordering = ['creationDate']
 
     title = models.CharField('Название статьи', max_length=256)
-    text = models.TextField('Текст статьи')
-    creationDate = models.DateField(auto_now_add=True)
-    images = models.ImageField(upload_to='photos', default='static/img/logo_black.png')
+    text = models.TextField('Текст статьи', default=None)
+    shortDescription = models.TextField('Краткое описание', default=None)
+    creationDate = models.DateField(auto_now_add=True) # дата создания поста
+    image = models.ImageField(upload_to='photos', default=None) # если будет одна фотка в посте то ее удобнее добавлять сразу со страницы поста
+    departureDate = models.DateField('Дата начала путешествия', default=None)
+    returnDate = models.DateField('Дата окончания путешествия', default=None)
 
     def __str__(self):
         return self.title
