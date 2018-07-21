@@ -51,97 +51,17 @@
 				<div class="col-md-9">
 					<div class="row">
 						<div class="col-md-6">
-							<article class="card mb-4">
-								<header class="card-header">
-									<div class="card-meta">
-										<a href="#">
-											<time class="timeago" datetime="2017-10-26 20:00" data-tid="1"> 7 месяцев назад</time>
-										</a>
-									 	в
-										<a href="#">Путешествие</a>
-									</div>
-									<a href="#">
-										<h4 class="card-title">Каменный город, как глоток свободы</h4>
-									</a>
-								</header>
-								<a href="#">
-									<img class="card-img" src="/static/img/1.jpg" alt="">
-								</a>
-								<div class="card-body">
-									<p class="card-text">
-										Рассказ про то, как мы чуть ли не потерялись, не умерли в грязи и не остались там на ночь.
-									</p>
-								</div>
-							</article>
-							<article class="card mb-4">
-								<header class="card-header">
-									<div class="card-meta">
-										<a href="#">
-											<time class="timeago" datetime="2017-10-26 20:00" data-tid="1"> 7 месяцев назад</time>
-										</a>
-									 	в
-										<a href="#">Путешествие</a>
-									</div>
-									<a href="#">
-										<h4 class="card-title">Красновишерск</h4>
-									</a>
-								</header>
-								<a href="#">
-									<img class="card-img" src="/static/img/3.jpg" alt="">
-								</a>
-								<div class="card-body">
-									<p class="card-text">
-										Через папортоники, трухлявые деревья мы всё-таки поднялись на гору Ветлан на высоту 263 метра над уровнем моря
-									</p>
-								</div>
-							</article>
+							{% for post in left_column %}
+								{% include "_shortPost.html" %}
+							{% endfor %}
 						</div>
 						<div class="col-md-6">
-							<article class="card mb-4">
-								<header class="card-header">
-									<div class="card-meta">
-										<a href="#">
-											<time class="timeago" datetime="2017-10-26 20:00" data-tid="1"> 7 месяцев назад</time>
-										</a>
-									 	в
-										<a href="#">Путешествие</a>
-									</div>
-									<a href="#">
-										<h4 class="card-title">Тайное место</h4>
-									</a>
-								</header>
-								<a href="#">
-									<img class="card-img" src="/static/img/2.jpg" alt="">
-								</a>
-								<div class="card-body">
-									<p class="card-text">
-										Почти каждый день мы поднимались на вершину холма и смотрели на то, как гаснут фонари и лампы в Кунгуре.
-									</p>
-								</div>
-							</article>
-							<article class="card mb-4">
-								<header class="card-header">
-									<div class="card-meta">
-										<a href="#">
-											<time class="timeago" datetime="2017-10-26 20:00" data-tid="1"> 7 месяцев назад</time>
-										</a>
-									 	в
-										<a href="#">Путешествие</a>
-									</div>
-									<a href="#">
-										<h4 class="card-title">Навсегда</h4>
-									</a>
-								</header>
-								<a href="#">
-									<img class="card-img" src="/static/img/4.jpg" alt="">
-								</a>
-								<div class="card-body">
-									<p class="card-text">
-										Переночевать в "десятке"? Подняться на гору? Доставать застявшую машину египетским способом? Только с друзьями
-									</p>
-								</div>
-							</article>
+							{% for post in right_column %}
+								{% include "_shortPost.html" %}
+							{% endfor %}
 						</div>
+
+						{% include "pagination.html" with object_list=all_posts %}
 					</div>
 				</div>
 				<div class="col-md-3 ml-auto">
