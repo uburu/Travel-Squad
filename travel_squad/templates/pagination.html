@@ -1,9 +1,10 @@
 <nav aria-label="Page navigation">
+    {% csrf_token %}
     <ul class="pagination">
         {% if object_list.has_previous %}
             <li class="page-item">
                 <a class="page-link" href="?page={{ object_list.previous_page_number }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+                    <span aria-hidden="true">туда</span>
                 </a>
             </li>
         {% endif %}
@@ -21,7 +22,7 @@
         {% if object_list.has_next %}
             <li class="page-item">
                 <a class="page-link"  href="?page={{ object_list.next_page_number }}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
+                    <span aria-hidden="true">сюда</span>
                 </a>
             </li>
         {% endif %}

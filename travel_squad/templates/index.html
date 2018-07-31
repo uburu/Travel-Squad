@@ -48,22 +48,9 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-6">
-							{% for post in left_column %}
-								{% include "_shortPost.html" %}
-							{% endfor %}
-						</div>
-						<div class="col-md-6">
-							{% for post in right_column %}
-								{% include "_shortPost.html" %}
-							{% endfor %}
-						</div>
-
-						{% include "pagination.html" with object_list=all_posts %}
-					</div>
-				</div>
+				{% block page  %}
+					{% include '_shortPosts_list.html' %}
+				{% endblock %}
 				<div class="col-md-3 ml-auto">
 					<aside class="sidebar sidebar-sticky">
 						<div class="card mb-4">
@@ -101,5 +88,7 @@
 				}
 			}
 		</script>
+		<script type="text/javascript" src="/static/js/index.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 	</body>
 </html>

@@ -43,15 +43,15 @@ class Photos(models.Model):
         return 'фото к статье ' + '"' + self.post.title + '"'
 
 
-class Tags(models.Model):
+# class Tags(models.Model):
 
-    class Meta:
-        db_table = 'tags'
-        verbose_name = 'tag'
-        verbose_name_plural = 'tags'
+#     class Meta:
+#         db_table = 'tags'
+#         verbose_name = 'tag'
+#         verbose_name_plural = 'tags'
 
-    post = models.ManyToManyFields(Post)
-    slug = models.CharField(max_length=50)
+#     post = models.ManyToManyFields(Post)
+#     slug = models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.slug
+#     def __str__(self):
+#         return self.slug
