@@ -20,9 +20,7 @@ function getCookie(name) {  // получаем csrf для отправли POS
 }
 
 function getURLParameter(sUrl, sParam) { 
-    console.log('getURLParameter URL: ',sUrl);
     let sPageURL = sUrl.substring(sUrl.indexOf('?') + 1);
-    console.log(sPageURL);
     let sURLVariables = sPageURL.split('&');
     for (let i = 0; i < sURLVariables.length; i++) {
         let sParameterName = sURLVariables[i].split('=');
@@ -40,7 +38,6 @@ function pagination_link_clickHandler(event){
     event.preventDefault(); // запрещаем событие 
     // из формы при нажатии на кнопки туда сюда через раз не удается получить url, из-з чего не происходит смены страницы   
     let path = event.target.href; // забираем путь 
-    console.log('paginator URL: ', path);
     let page = getURLParameter(path, 'page');
     let csrftoken = getCookie('csrftoken');
     if (typeof page !== 'undefined') {

@@ -48,34 +48,14 @@
 
 		<div class="container">
 			<div class="row">
-				{% block page  %}
-					{% include '_shortPosts_list.html' %}
+				{% block page %}
+					{% include '_shortArticles_list.html' %}
 				{% endblock %}
-				<div class="col-md-3 ml-auto">
-					<aside class="sidebar sidebar-sticky">
-						<div class="card mb-4">
-							<div class="card-body">
-								<h4 class="card-title">Тэги</h4>
-								<a class="btn btn-light btn-sm mb-1" href="#">Путешествие</a><br>
-								<a class="btn btn-light btn-sm mb-1" href="#">Работа</a><br>
-								<a class="btn btn-light btn-sm mb-1" href="#">Лайфстайл</a><br>
-								<a class="btn btn-light btn-sm mb-1" href="#">Фотография</a><br>
-								<a class="btn btn-light btn-sm mb-1" href="#">Еда</a><br>
-							</div>
-						</div>
-						<div class="card mb-4">
-							<div class="card-body">
-								<h4 class="card-title">Популярные истории</h4>
-								<a href="#" class="d-inline-block">
-									<h4 class="h6">Каменный город, как глоток свободы</h4>
-									<img class="card-img" src="/static/img/1.jpg">
-								</a>
-								<time class="timeago" datetime="2017-10-03 20:00" data-tid="7">7 month ago</time>
-								 в Путешестия
-							</div>
-						</div>
-					</aside>
-				</div>
+
+				{% block sidebar %}
+					{% include '_sidebar.html' %}
+				{% endblock %}
+
 			</div>
 		</div>
 		<script>
