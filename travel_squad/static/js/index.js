@@ -54,7 +54,7 @@ function pagination_link_clickHandler(event){
                 }
             },
             success : function(json) {
-                // Если запрос прошёл успешно и сайт вернул результат   
+                // Если запрос прошёл успешно и сайт вернул результат  
                 if (json.result)
                 {
                     window.history.pushState({route: path},'', path); // устанавливаем URL в строку браузера
