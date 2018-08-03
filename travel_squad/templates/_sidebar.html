@@ -4,7 +4,8 @@
             <div class="card-body">
                 <h4 class="card-title">Тэги</h4>
                 {% for tag in tags %}
-                   <a class="btn btn-light btn-sm mb-1" href="{% url 'articles_by_tag' tag.name %}">{{ tag.name }}</a><br>
+                    <!-- класс tag нужен для getElementsByClassName -->
+                    <a class="btn btn-light btn-sm mb-1 tag" href="{% url 'articles_by_tag' tag.name %}">{{ tag.name }}</a><br>
                 {% endfor %}
             </div>
         </div>

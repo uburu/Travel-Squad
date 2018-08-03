@@ -32,7 +32,23 @@ def _paginate(objects_list, request):
 #     all_posts = _paginate(Article.objects.all_new(), request)
 #     first_half = all_posts[:2]
 #     second_half = all_posts[2:]  # посмотреть что будет при пустом list []
-#
+
+#     tags = Tags.objects.all_tags()
+#     context = {
+#         'left_column': first_half,
+#         'right_column': second_half,
+#         'all_posts': all_posts,
+#         'tags': tags
+#     }
+#     return render(request, 'index.html', context)
+
+
+# @requires_csrf_token
+# def articles_by_tag(request, tag_name):
+#     all_posts = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
+#     first_half = all_posts[:2]
+#     second_half = all_posts[2:]
+
 #     tags = Tags.objects.all_tags()
 #     context = {
 #         'left_column': first_half,
@@ -48,74 +64,44 @@ def view_body(request, all_posts):
     second_half = all_posts[2:]
 
     tags = Tags.objects.all_tags()
+    context = {
+        'left_column': first_half,
+        'right_column': second_half,
+        'all_posts': all_posts,
+        'tags': tags
+    }
 
     if request.method == 'GET':
-        context = {
-            'left_column': first_half,
-            'right_column': second_half,
-            'all_posts': all_posts,
-            'tags': tags
-        }
-        return render(request, 'index.html', context)
-
-    if request.method == 'POST':
         if request.is_ajax():
-            cont = {
-                'left_column': first_half,
-                'right_column': second_half,
-                'all_posts': all_posts,
-                'tags': tags
-            }
             return JsonResponse({
                 'result': True,
                 'articles': render_to_string(
                     request=request,
                     template_name='_shortArticles_list.html',
-                    context=cont
-                )
-            })
+                    context=context
+                    )
+                })
         else:
-            raise Http404('page does not exist')
+            return render(request, 'index.html', context)
+    else:
+        raise Http404('page does not exist')
 
-
-@requires_csrf_token
-def articles_by_tag(request, tag_name):
-    all_posts = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
-    return view_body(request, all_posts)
-
-
-@requires_csrf_token
 def index(request):
     all_posts = _paginate(Article.objects.all_new(), request)
-    return view_body(request,all_posts)
+
+    if len(all_posts) > 0:
+        return view_body(request, all_posts)
+    else:
+        raise Http404()
 
 
-# def articles_by_tag(request, tag):
-#     if request.method == 'GET':
-#         articles_by_tag = _paginate(Article.objects.all_articles_by_tag(tag), request)
-#         first_half = articles_by_tag[:2]
-#         second_half = articles_by_tag[2:]
-#
-#         tags = Tags.objects.all_tags()
-#         cont = {
-#             'left_column': first_half,
-#             'right_column': second_half,
-#             'all_posts': articles_by_tag,
-#             'tags': tags
-#         }
-#         if request.is_ajax():
-#             return JsonResponse({
-#                 'result': True,
-#                 'articles': render_to_string(
-#                     request=request,
-#                     template_name='_shortArticles_list.html',
-#                     context=cont
-#                     )
-#                 })
-#         else:
-#             raise Http404('page does not exist')
-#     else:
-#         raise Http404('page does not exist')
+def articles_by_tag(request, tag_name):
+    articles_by_tag = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
+    
+    if len(articles_by_tag) > 0:
+        return view_body(request, articles_by_tag)
+    else: # сейчас выпадает 404 если ввести несуществующий tag в адресную строку, но вообще хорошо бы показать какую-нибудь страничку
+        raise Http404()
 
 
 def post(request, id):
