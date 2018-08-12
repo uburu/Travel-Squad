@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.search import SearchVectorField
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ class Tags(models.Model):
 
 
 class ArticleManager(models.Manager):
-    def all_new(self):
+    def all_articles(self):
         return self.all()
 
     def all_articles_by_tag(self, tag_name):

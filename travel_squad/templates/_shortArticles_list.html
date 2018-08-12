@@ -11,6 +11,6 @@
             {% endfor %}
         </div>
 
-        {% include "pagination.html" with object_list=all_posts %}
+        {% include "pagination.html" with object_list=all_posts url_query=last_query %}
     </div>
 </div>

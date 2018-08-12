@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'travel_squad.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'travel_squad',
+        'USER': 'ermak',
+        'PASSWORD': 'ptvvrdbe16u',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
