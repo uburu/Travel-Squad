@@ -1,0 +1,14 @@
+{% for post in columns %}
+<a href="{% url 'post' post.id %}">
+    <div class="slide-" style="background-image: url({{ post.image.url }});">
+        <div class="thumbnail container">
+            <div class="row h-100">
+                <div class="col-lg mt-auto">
+                    <p class="h1" style="overflow-y: hidden;">{{ post.title }}</p>
+                    <p>{{ post.shortDescription }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+{% endfor %}

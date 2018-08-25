@@ -1,0 +1,26 @@
+/* @media */
+
+/* monitors and laptops */
+@media screen and (min-width: 1240px)  {
+   .ava {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 1024px) and (max-width: 1240px)  {
+  .ava {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .ava {
+    height: 100px;
+    width: 100px;
+  }
+
+}
