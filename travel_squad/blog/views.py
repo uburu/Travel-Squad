@@ -65,15 +65,14 @@ def _paginate(objects_list, request, page=None):
 
 
 def view_body(request, all_posts, last_query=''):
-    first_half = all_posts[:2]
-    second_half = all_posts[2:]
+    first_fourth = all_posts[:4]
+    # second_half = all_posts[2:]
 
     tags = Tags.objects.all_tags()
 
     search_form = SearchForm(request.GET)
     context = {
-        'left_column': first_half,
-        'right_column': second_half,
+        'columns': first_fourth,
         'all_posts': all_posts,
         'tags': tags,
         'form': search_form,
@@ -123,10 +122,6 @@ def post(request, id):
     return render(request, 'post.html', context)
 
 
-
-#TODO при переходе по страничкам результата поискового запроса вызывается эта функция, которая при каждом переходе заного делает запрос к базе и поиск в нем
-# подумать как избежать повторных запросов к базе
-# возможное решиние - кеширование ответа базы
 def search_results(request):
     search_form = SearchForm()
     last_query = ''

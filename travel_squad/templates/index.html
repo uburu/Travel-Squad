@@ -1,81 +1,224 @@
 <!doctype>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta chrset="utf-8">
 		<title>Travel Squad</title>
 
-		<link href="https://milo.bootlab.io/dist/css/milo.css" rel="stylesheet">
 		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="stylesheet" href="/static/css/media.css">
+		<link rel="stylesheet" href="/static/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="/static/js/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/slick/slick-theme.css"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-			<main role="main" class="logo col-lg-5">
-				<a href="/">
-					<img src="/static/img/logo_black.png" class="img-fluid zoomIn animated" alt>
-				</a>	
-				<p class="title fadeIn animated">Это был лишь вопрос времени.</p>
-			
-			</main>
+		<div class="main container">
+			<div class="row h-100">
+				<ul class="list">
+					<li>
+						<object class="icon" type="image/svg+xml" data="/static/img/instagram.svg"></object>
+					</li>
+					<li>
+						<object class="icon" type="image/svg+xml" data="/static/img/youtube.svg"></object>
+					</li>
+				</ul>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-9 my-auto mx-auto">
+					<img src="/static/img/logo_black.png" class="img-fluid logo" alt>
+					<p class="title">Это был лишь вопрос времени.</p>
+				</div>
+				<div class="scroll">
+					<object class="icon" type="image/svg+xml" data="/static/img/down-arrow.svg"></object>
+				</div>
+			</div>
 		</div>
-        <form method="get" id="search_form" action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0">
-           <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
-			{{ form }}
-           <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column mb-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 mx-auto mb-4"> <!--col-xl-5 180 180-->
-						<img class="rounded-circle mx-auto d-block mb-4" src="/static/img/ivan.jpg" alt="photo" width="180" height="180">
-						<h2 class="pers-information mb-1">Иван</h2>
-						<p class="pers-information" ><b>Фотограф</b></p>
-						<p class="pers-information">Познакомься, это — Ваня. Он волк в душе, поэтому всегда стремится к свободе мысли и передвижений. Он, как человек, обладающий эмоциональным интеллектом, является главным духовным лидером travel squad. Важно упомянуть и одно из выдающихся качеств Вани - он никогда не спящий вулкан, извергающий идеи, что автоматически делает его очень важным звеном выживания в путешествиях.</p>
+		<img class="b-i img-fluid" src="/static/img/10.jpg" style="background-color: black;"/>
+
+		<div class="container" style="min-width: 100%;">
+			<div class="row" style="overflow-y: hidden;">
+				<div class="col-lg my-auto p-5" style="text-align: center; color: white;">
+					<p class="h1" style="overflow-y: hidden;">GALLERY</p>
+					<p>Projects overwrite chetotam</p>
+				</div>
+				<div class="col-lg my-auto p-5" style="text-align: center;">
+					<img height="400" width="1" src="/static/img/thumb_white.png"/>
+				</div>
+				<div class="bars col-lg my-auto p-5" style="text-align: center; color: white;">
+					<p class="h1" style="overflow-y: hidden;">ABOUT</p>
+					<p>Travel Squad</p>
+				</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="feed container h-100">
+			<div class="row" style="padding-top: 10%; padding-bottom: 10%; min-height: 100%;">
+				<div id="feed" class="center col-lg p-0">
+					{% block page %}
+						{% include '_shortArticles_list.html' %}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+
+		<div class="persons container m-0" style="padding-bottom: 10%;">
+			<div class="row">
+				<div class="col-lg ml-5 mr-5">
+					<img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/ivan.jpg" alt="photo">
+						<p class="pers-information mb-1 h4" style="overflow-y: hidden;">Иван</p>
+						<p class="pers-information"><b>Фотограф</b></p>
+						<p class="pers-information">Познакомься, это — Ваня. Он волк в душе, поэтому всегда стремится к свободе мысли и передвижений.</p>
+				</div>
+				<div class="col-lg ml-5 mr-5">
+					<img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/alexandra.jpg" alt="photo">
+					<p class="pers-information mb-1 h4" style="overflow-y: hidden;">Александра</p>
+					<p class="pers-information"><b>Не фотограф</b></p>
+					<p class="pers-information">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquet tincidunt urna nec rhoncus. </p>
+				</div>
+				<div class="col-lg ml-5 mr-5">
+					<img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/maksim.jpg" alt="photo">
+					<p class="pers-information mb-1 h4" style="overflow-y: hidden;">Максим</p>
+					<p class="pers-information"><b>Второй фотограф</b></p>
+					<p class="pers-information">Это Максим. Максимально целеустремлённый и легко найдет общий язык даже с камчатским медведем.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="min-width: 100%; background-color: black; padding-top: 10%; padding-bottom: 10%;">
+			<div class="social row" style="color: white; text-align: center;">
+				<p class="instagram col-sm-1 ml-auto">INSTAGRAM</p>
+				<p class="youtube col-sm-1 mr-auto">YOUTUBE</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/1.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/6.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/3.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/4.jpg" class="img-fluid"/>
+							</a>
+						</div>
 					</div>
-					<div class="col-lg-5 mx-auto mb-4">
-						<img class="rounded-circle mx-auto d-block mb-4" src="/static/img/alexandra.jpg" alt="photo" width="180" height="180">
-						<h2 class="pers-information mb-4">Александра</h2>
-						<p class="pers-information">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquet tincidunt urna nec rhoncus. Sed euismod eu felis facilisis porta. Sed consectetur egestas urna et semper. Aenean non mauris at nisi mattis pharetra. Duis venenatis feugiat magna sit amet rhoncus. Vestibulum leo ante, hendrerit at consequat finibus, congue sed justo. Curabitur in pretium leo. Sed semper sagittis venenatis.</p>
-					</div>
-					<div class="col-lg-5 mx-auto mb-4">
-						<img class="rounded-circle mx-auto d-block mb-4" src="/static/img/andrew.jpg" alt="photo" width="180" height="180">
-						<h2 class="pers-information mb-4">Андрей</h2>
-						<p class="pers-information">Тут Андрей. Не просто приятный парень с фотографии - он райтер, и всё, что происходит в Travel squad, известно только из его заметок. Открытый для всего нового, коммуникабельный и, кроме того, крайне рисковый. Его жизненное кредо: “Лучше сделать и пожалеть, чем пожалеть и не сделать”. Надеемся, что нам не придётся быть стрессоустойчивыми. Будем держать руку на пульсе событий и на его пульсе.</p>
-					</div>
-					<div class="col-lg-5 mx-auto mb-4">
-						<img class="rounded-circle mx-auto d-block mb-4" src="/static/img/maksim.jpg" alt="photo" width="180" height="180">
-						<h2 class="pers-information mb-4">Максим</h2>
-						<p class="pers-information">Это Максим. Максимально целеустремлённый и легко найдет общий язык даже с камчатским медведем. Когда тут появятся красивые и динамичные фотографии с косолапыми, вероятнее всего для лучшего позирования с ними договорился именно Максим. «Огонь, вода, грязь не помеха для идеального кадра» – говорит он. Хорошо, что лава камчатских вулканов не в этом списке.</p>
+				</div>
+				<div id="mobile" class="col-sm-6">
+					<div class="row">
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/1.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/1.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/1.jpg" class="img-fluid"/>
+							</a>
+						</div>
+						<div class="col-3 p-0">
+							<a href="#" class="photo">
+								<img src="/static/img/1.jpg" class="img-fluid"/>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="container">
-			<div class="row">
-				{% block page %}
-					{% include '_shortArticles_list.html' %}
-				{% endblock %}
+<!-- 		<footer class="site-footer bg-darkest" role="contentinfo">
+    <div class="container">
 
-				{% block sidebar %}
-					{% include '_sidebar.html' %}
-				{% endblock %}
-
-			</div>
-		</div>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Privacy policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Terms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Feedback</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Advertise</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page-contact.html">Contact</a>
+        </li>
+      </ul>
+      <div class="copy">
+        © Milo 2018<br>
+        All rights reserved
+      </div>
+    </div> -->
+  </footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="/static/js/slick/slick.min.js"></script>
 		<script>
-			if(screen.width > 2000)
+			if(document.documentElement.clientWidth < 768)
 			{
-				var pers = document.querySelectorAll(".col-lg-3");
-				for(var i = 0; i < pers.length; i++)
-				{
-					pers[i].classList.add("col-xl-5");
-				}
+				var elem = document.body.childNodes[7];
+				elem.classList.remove("h-100");
+				var feed = document.getElementById("feed");
+				var feedParent = feed.parentNode;
+				feed.remove();
+				var newFeed = document.createElement('div');
+				newFeed.className = "center col-lg p-0";
+
+				{% for post in columns %}
+					var src = document.createElement('a');
+					src.href = "{% url 'post' post.id %}";
+					var elem = document.createElement('div');
+					var str = "slide- thumbnail col-lg p-4";
+					elem.className = str;
+					elem.style = "background-image: url({{ post.image.url }});"
+					elem.innerHTML = "<h1>{{ post.title }}</h1><p>{{ post.shortDescription }}</p>"
+					src.appendChild(elem);
+					newFeed.appendChild(src);
+				{% endfor %}
+
+				feedParent.appendChild(newFeed);
+
+				document.getElementById("mobile").remove();
+			}
+			else
+			{
+				$(".center").slick({
+	        		infinite: true,
+	        		centerMode: true,
+	        		slidesToShow: 3,
+	        		adaptiveHeight: true,
+	        		arrows: false,
+	        		centerPadding: '100px',
+	        		variableWidth: true,
+	        		autoplay: true,
+	        		autoplaySpeed: 5000,
+      			});
+			}
+
+			if(document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1240) {
+				var elem = document.body.childNodes[7];
+				elem.classList.remove("h-100");
+				elem.childNodes[1].style = "padding-top: 10%; padding-bottom: 10%;";
 			}
 		</script>
-		<script type="text/javascript" src="/static/js/index.js"></script>
-		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 	</body>
 </html>
