@@ -49,7 +49,7 @@ def _paginate(objects_list, request, page=None):
     if not page:
         page = request.GET.get('page')
 
-    paginator = Paginator(objects_list, 4)
+    paginator = Paginator(objects_list, 12)
 
     try:
         objects_page = paginator.page(page)
