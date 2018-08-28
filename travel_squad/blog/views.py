@@ -94,14 +94,34 @@ def view_body(request, all_posts, last_query=''):
     else:
         raise Http404('page does not exist')
 
+# def index(request):
+#     all_posts = _paginate(Article.objects.all_articles(), request)
+
+#     if len(all_posts) > 0:
+#         return view_body(request, all_posts)
+#     else:
+#         raise Http404()
+
 def index(request):
-    all_posts = _paginate(Article.objects.all_articles(), request)
+    return render(request, 'index.html')
 
-    if len(all_posts) > 0:
-        return view_body(request, all_posts)
-    else:
-        raise Http404()
+def gallery(request):
+    all_photos = _paginate(Photos.objects.all_photos(), request)
+    row1 = all_photos[:3]
+    row2 = all_photos[3:6]
+    row3 = all_photos[6:9]
+    row4 = all_photos[9:12]
 
+    context = {
+        'all_photos': all_photos,
+        'row_1': row1,
+        'row_2': row2,
+        'row_3': row3,
+        'row_4': row4,
+        'last_query': ''
+    }
+
+    return render(request, 'gallery.html', context)
 
 def articles_by_tag(request, tag_name):
     articles_by_tag = _paginate(Article.objects.all_articles_by_tag(tag_name), request)

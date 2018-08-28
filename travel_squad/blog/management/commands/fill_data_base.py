@@ -4,10 +4,11 @@ from blog.models import Article, Tags, Photos
 from faker import Faker
 import random
 
-photos = ['photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg', 'photos/4.jpg',
-          'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg', 'photos/8.jpg']
+
+# photos = list(filter(lambda x: x.endswith('.jpg'),os.listdir('../../../media/photos')))
 
 
+photos = ['photos/1.jpg', 'photos/3.jpg', 'photos/4.jpg', 'photos/6.jpg', 'photos/8.jpg']
 class Command(BaseCommand):
 
     help = 'This command fills existing tables in your data base'
@@ -16,6 +17,7 @@ class Command(BaseCommand):
         self.create_admin()
         self.fill_tags()
         self.fill_articles()
+        self.fill_photos()
         self.stdout.write(self.style.SUCCESS('Finish to fill the database'))
 
     def create_admin(self):
@@ -67,4 +69,18 @@ class Command(BaseCommand):
 
 
     def fill_photos(self):
-        pass
+        if Photos.objects.count() > 0:
+            return
+
+        tags_set = Tags.objects.all()
+        article_set = Article.objects.all()
+        for i in range(40):
+            photo = Photos()
+            photo.img = random.choice(photos)
+            photo.post = random.choice(article_set)
+            photo.save()
+            for j in range(3):
+                t = random.choice(tags_set)
+                photo.tags.add(t)
+                self.stdout.write('add tag [%s] to photo [%d]' % (t, i))
+        

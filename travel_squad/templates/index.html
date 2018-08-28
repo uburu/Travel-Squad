@@ -4,16 +4,15 @@
 		<meta chrset="utf-8">
 		<title>Travel Squad</title>
 
-		<link rel="stylesheet" href="/static/css/style.css">
-		<link rel="stylesheet" href="/static/css/media.css">
-		<link rel="stylesheet" href="/static/css/animate.css">
-		<link rel="stylesheet" type="text/css" href="/static/js/slick/slick.css"/>
-		<link rel="stylesheet" type="text/css" href="/static/js/slick/slick-theme.css"/>
-
+		<link rel="stylesheet" href="/static/css/styles/style.css">
+		<link rel="stylesheet" href="/static/css/styles/media.css">
+		<link rel="stylesheet" href="/static/css/styles/animate.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/static/css/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/css/slick/slick-theme.css"/>
 	</head>
 	<body>
 		<div class="main container">
@@ -40,8 +39,10 @@
 		<div class="container" style="min-width: 100%;">
 			<div class="row" style="overflow-y: hidden;">
 				<div class="col-lg my-auto p-5" style="text-align: center; color: white;">
-					<p class="h1" style="overflow-y: hidden;">GALLERY</p>
-					<p>Projects overwrite chetotam</p>
+					<a href="{% url 'gallery' %}">
+						<p class="h1" style="overflow-y: hidden;">GALLERY</p>
+						<p>Projects overwrite chetotam</p>
+					</a>
 				</div>
 				<div class="col-lg my-auto p-5" style="text-align: center;">
 					<img height="400" width="1" src="/static/img/thumb_white.png"/>
@@ -50,16 +51,52 @@
 					<p class="h1" style="overflow-y: hidden;">ABOUT</p>
 					<p>Travel Squad</p>
 				</div>
-				</a>
 			</div>
 		</div>
 
 		<div class="feed container h-100">
 			<div class="row" style="padding-top: 10%; padding-bottom: 10%; min-height: 100%;">
 				<div id="feed" class="center col-lg p-0">
-					{% block page %}
-						{% include '_shortArticles_list.html' %}
-					{% endblock %}
+					<div class="slide-1">
+						<div class="thumbnail container">
+							<div class="row h-100">
+								<div class="col-lg mt-auto">
+									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
+									<p>Краткое описание события или переход</br> на другое событие</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slide-2">
+						<div class="thumbnail container">
+							<div class="row h-100">
+								<div class="col-lg mt-auto">
+									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
+									<p>Краткое описание события или переход</br> на другое событие</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slide-3">
+						<div class="thumbnail container">
+							<div class="row h-100">
+								<div class="col-lg mt-auto">
+									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
+									<p>Краткое описание события или переход</br> на другое событие</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slide-4">
+						<div class="thumbnail container">
+							<div class="row h-100">
+								<div class="col-lg mt-auto">
+									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
+									<p>Краткое описание события или переход</br> на другое событие</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -143,33 +180,6 @@
 				</div>
 			</div>
 		</div>
-
-<!-- 		<footer class="site-footer bg-darkest" role="contentinfo">
-    <div class="container">
-
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Privacy policy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Terms</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Feedback</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Advertise</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page-contact.html">Contact</a>
-        </li>
-      </ul>
-      <div class="copy">
-        © Milo 2018<br>
-        All rights reserved
-      </div>
-    </div> -->
-  </footer>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="/static/js/slick/slick.min.js"></script>
 		<script>
@@ -182,18 +192,14 @@
 				feed.remove();
 				var newFeed = document.createElement('div');
 				newFeed.className = "center col-lg p-0";
-
-				{% for post in columns %}
-					var src = document.createElement('a');
-					src.href = "{% url 'post' post.id %}";
+				for(var i = 0; i < 4; i++)
+				{
 					var elem = document.createElement('div');
-					var str = "slide- thumbnail col-lg p-4";
+					var str = "slide-"+ String(i+1) +" thumbnail col-lg p-4";
 					elem.className = str;
-					elem.style = "background-image: url({{ post.image.url }});"
-					elem.innerHTML = "<h1>{{ post.title }}</h1><p>{{ post.shortDescription }}</p>"
-					src.appendChild(elem);
-					newFeed.appendChild(src);
-				{% endfor %}
+					elem.innerHTML = "<h1>Заголовок</h1><p>Краткое описание события или переход</br> на другое событие</p>"
+					newFeed.appendChild(elem);
+				}
 
 				feedParent.appendChild(newFeed);
 

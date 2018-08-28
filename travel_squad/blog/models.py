@@ -53,6 +53,15 @@ class Article(models.Model):
         return self.title
 
 
+
+class PhotosManager(models.Manager):
+    def all_photos(self):
+        return self.all()
+    def all_photos_by_tag(self, tag_name):
+        return self.filter(tags__name=tag_name)
+
+
+
 class Photos(models.Model):
 
     class Meta:
@@ -60,8 +69,10 @@ class Photos(models.Model):
         verbose_name = 'photo'
         verbose_name_plural = 'photos'
 
+    objects = PhotosManager()
     post = models.ForeignKey(Article, on_delete=models.CASCADE, default=None)
-    photo = models.ImageField('Фотография', upload_to='photos/', default=None)
+    img = models.ImageField('Фотография', upload_to='photos/', default=None)
+    tags = models.ManyToManyField(Tags)
 
     def __str__(self):
         return 'фото к статье ' + '"' + self.post.title + '"'

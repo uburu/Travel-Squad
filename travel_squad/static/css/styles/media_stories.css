@@ -1,0 +1,34 @@
+/* @media */
+
+/* monitors and laptops */
+@media screen and (min-width: 1240px)  {
+  .slide {
+    background-size: 130%; 
+    background-repeat: no-repeat; 
+    width: 30%; 
+    height: 30%;
+    background-position: center;
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 1024px) and (max-width: 1240px)  {
+  .slide {
+    background-size: 130%; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 40%;
+    background-position: center;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .slide {
+    background-size: 130%; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 40%;
+    background-position: center;
+  }
+}
