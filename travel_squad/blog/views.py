@@ -64,35 +64,35 @@ def _paginate(objects_list, request, page=None):
     return objects_page
 
 
-def view_body(request, all_posts, last_query=''):
-    first_fourth = all_posts[:4]
-    # second_half = all_posts[2:]
+# def view_body(request, all_posts, last_query=''):
+#     first_fourth = all_posts[:4]
+#     # second_half = all_posts[2:]
 
-    tags = Tags.objects.all_tags()
+#     tags = Tags.objects.all_tags()
 
-    search_form = SearchForm(request.GET)
-    context = {
-        'columns': first_fourth,
-        'all_posts': all_posts,
-        'tags': tags,
-        'form': search_form,
-        'last_query': last_query
-    }
+#     search_form = SearchForm(request.GET)
+#     context = {
+#         'columns': first_fourth,
+#         'all_posts': all_posts,
+#         'tags': tags,
+#         'form': search_form,
+#         'last_query': last_query
+#     }
 
-    if request.method == 'GET':
-        if request.is_ajax():
-            return JsonResponse({
-                'result': True,
-                'articles': render_to_string(
-                    request=request,
-                    template_name='_shortArticles_list.html',
-                    context=context
-                    )
-                })
-        else:
-            return render(request, 'index.html', context)
-    else:
-        raise Http404('page does not exist')
+#     if request.method == 'GET':
+#         if request.is_ajax():
+#             return JsonResponse({
+#                 'result': True,
+#                 'articles': render_to_string(
+#                     request=request,
+#                     template_name='_shortArticles_list.html',
+#                     context=context
+#                     )
+#                 })
+#         else:
+#             return render(request, 'index.html', context)
+#     else:
+#         raise Http404('page does not exist')
 
 # def index(request):
 #     all_posts = _paginate(Article.objects.all_articles(), request)
@@ -102,15 +102,27 @@ def view_body(request, all_posts, last_query=''):
 #     else:
 #         raise Http404()
 
+# def articles_by_tag(request, tag_name):
+#     articles_by_tag = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
+
+#     if len(articles_by_tag) > 0:
+#         return view_body(request, articles_by_tag)
+#     else: # сейчас выпадает 404 если ввести несуществующий tag в адресную строку, но вообще хорошо бы показать какую-нибудь страничку
+#         raise Http404()
+
+
+######################### ПОКА ВСЕ БЕЗ АЯКСА #################################
 def index(request):
     return render(request, 'index.html')
 
-def gallery(request):
+def gallery(request): # пока без аякса
     all_photos = _paginate(Photos.objects.all_photos(), request)
     row1 = all_photos[:3]
     row2 = all_photos[3:6]
     row3 = all_photos[6:9]
-    row4 = all_photos[9:12]
+    row4 = all_photos[9:12] 
+
+    tags = Tags.objects.all_tags()
 
     context = {
         'all_photos': all_photos,
@@ -118,18 +130,77 @@ def gallery(request):
         'row_2': row2,
         'row_3': row3,
         'row_4': row4,
-        'last_query': ''
+        'last_query': '',
+        'tags': tags
     }
 
     return render(request, 'gallery.html', context)
 
-def articles_by_tag(request, tag_name):
-    articles_by_tag = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
+def photos_by_tag(request, tag_name):
+    photos_by_tag = _paginate(Photos.objects.all_photos_by_tag(tag_name), request)
 
-    if len(articles_by_tag) > 0:
-        return view_body(request, articles_by_tag)
-    else: # сейчас выпадает 404 если ввести несуществующий tag в адресную строку, но вообще хорошо бы показать какую-нибудь страничку
-        raise Http404()
+    row1 = photos_by_tag[:3]
+    row2 = photos_by_tag[3:6]
+    row3 = photos_by_tag[6:9]
+    row4 = photos_by_tag[9:12]
+
+    tags = Tags.objects.all_tags()
+
+    context = {
+        'all_photos': photos_by_tag,
+        'row_1': row1,
+        'row_2': row2,
+        'row_3': row3,
+        'row_4': row4,
+        'last_query': '',
+        'tags': tags
+    }
+    return render(request, 'gallery.html', context)
+
+def stories(request):
+    all_stories = _paginate(Article.objects.all_articles(), request)
+    tags = Tags.objects.all_tags()
+
+    stories1 = all_stories[:3]
+    stories2 = all_stories[3:6]
+    stories3 = all_stories[6:9]
+    stories4 = all_stories[9:12]
+    stories5 = all_stories[12:15]
+
+    context = {
+    'all_stories': all_stories,
+    'stories_1': stories1,
+    'stories_2': stories2,
+    'stories_3': stories3,
+    'stories_4': stories4,
+    'stories_5': stories5,
+    'last_query': '',
+    'tags': tags
+    }
+    return render(request, 'stories.html', context)
+
+def stories_by_tag(request, tag_name):
+    all_stories = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
+    tags = Tags.objects.all_tags()
+
+    stories1 = all_stories[:3]
+    stories2 = all_stories[3:6]
+    stories3 = all_stories[6:9]
+    stories4 = all_stories[9:12]
+    stories5 = all_stories[12:15]
+
+    context = {
+    'all_stories': all_stories,
+    'stories_1': stories1,
+    'stories_2': stories2,
+    'stories_3': stories3,
+    'stories_4': stories4,
+    'stories_5': stories5,
+    'last_query': '',
+    'tags': tags
+    }
+    return render(request, 'stories.html', context)
+
 
 
 #TODO если зайти в конкретный пост, а потом попытаться выйти из него нажатием стрелочки назад в браузере, то на экран вылезает весь текст предыдущего ajax запроса

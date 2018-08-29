@@ -22,7 +22,9 @@
 				<div class="col-lg menu mt-4" style="text-align: center;">
 					<span class="m-4">Gallery</span>
 					<span class="m-4">About us</span>
-					<span class="m-4">Stories</span>
+					<a href="{% url 'stories' %}">
+						<span class="m-4">Stories</span>
+					</a>	
 				</div>
 			</div>
 		</div>
@@ -73,6 +75,9 @@
 						<div class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></div>
 					{% endfor %}
 				</div>
+				{% block sidebar %}
+					{% include '_gallery_sidebar.html' %}
+				{% endblock %}
 			</div>
 		</div>
 		{% include "pagination.html" with object_list=all_photos url_query=last_query %}

@@ -1,0 +1,30 @@
+		<div style="background-color: white;">
+			<div class="container" style="min-width: 100%;">
+				<div class="row">
+		            {% for story in stories_1 %}
+		                {% include "_short_story.html" %}
+		            {% endfor %}
+		        </div>
+				<div class="row">
+		            {% for story in stories_2 %}
+		                {% include "_short_story.html" %}
+		            {% endfor %}
+				</div>
+				<div class="row">
+		            {% for story in stories_3 %}
+		                {% include "_short_story.html" %}
+		            {% endfor %}
+				</div>
+				<div class="row">
+		            {% for story in stories_4 %}
+		                {% include "_short_story.html" %}
+		            {% endfor %}
+				</div>
+				<div class="row">
+		            {% for story in stories_5 %}
+		                {% include "_short_story.html" %}
+		            {% endfor %}
+				</div>
+			</div>
+		</div>
+		{% include "pagination.html" with object_list=all_stories url_query=last_query %}
