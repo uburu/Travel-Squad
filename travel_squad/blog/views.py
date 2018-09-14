@@ -112,8 +112,20 @@ def _paginate(objects_list, request, page=None):
 
 
 ######################### ПОКА ВСЕ БЕЗ АЯКСА #################################
+# def index(request):
+#     return render(request, 'index.html')
+
 def index(request):
-    return render(request, 'index.html')
+    all_posts = _paginate(Article.objects.all_articles(), request)
+    first_half = all_posts[:4]
+
+    tags = Tags.objects.all_tags()
+    context = {
+        'columns': first_half,
+        'all_posts': all_posts,
+        'tags': tags
+    }
+    return render(request, 'index.html', context)
 
 def gallery(request): # пока без аякса
     all_photos = _paginate(Photos.objects.all_photos(), request)

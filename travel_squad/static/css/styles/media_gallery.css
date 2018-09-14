@@ -3,8 +3,8 @@
 /* monitors and laptops */
 @media screen and (min-width: 1240px)  {
   .photo {
-    width:30%; 
-    height:30%; 
+    width:30% !important; 
+    height:30% !important; 
     background-size: 140%;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,8 +14,8 @@
 /* tablet */
 @media screen and (min-width: 1024px) and (max-width: 1240px)  {
   .photo {
-    width:10%; 
-    height:10%; 
+    width:10% !important; 
+    height:10% !important; 
     background-size: 140%;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,8 +25,8 @@
 /* mobile */
 @media screen and (max-width: 768px) {
   .photo {
-    width:30%; 
-    height:30%; 
+    width:30% !important; 
+    height:30% !important; 
     background-size: 140%;
     background-position: center;
     background-repeat: no-repeat;

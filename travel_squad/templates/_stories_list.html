@@ -25,6 +25,6 @@
 		                {% include "_short_story.html" %}
 		            {% endfor %}
 				</div>
+				{% include "pagination.html" with object_list=all_stories url_query=last_query %}
 			</div>
 		</div>
-		{% include "pagination.html" with object_list=all_stories url_query=last_query %}

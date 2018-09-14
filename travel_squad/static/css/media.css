@@ -101,4 +101,12 @@
     border: none;
   }
 
+  .thumbnail {
+    height: 30% !important;
+  }
+
+  h1 {
+    font-size: 90% !important;
+  }
+
 }

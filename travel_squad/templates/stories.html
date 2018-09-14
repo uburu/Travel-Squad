@@ -13,85 +13,14 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="head container p-5" style="min-width: 100%;">
-			<div class="row">
-				<div class="col-lg" style="text-align: center;">
-					<img src="photo/logo_black_white.png" class="img-fluid logo" alt>
-				</div>
-				<div class="w-100"></div>
-				<div class="col-lg menu mt-4" style="text-align: center;">
-					<span class="m-4">Gallery</span>
-					<span class="m-4">About us</span>
-					<span class="m-4">Stories</span>
-				</div>
-			</div>
-		</div>
-		<img class="bg rellax" data-rellax-speed="8" data-rellax-percentage="0.3" src="photo/5.jpg" alt>
+		{% include 'header.html' %}
+		
 		{% block page %}
 			{% include '_stories_list.html' %}
 		{% endblock %}
 
-
-		{% block sidebar %}
-			{% include '_stories_sidebar.html' %}
-		{% endblock %}
-		<div class="container" style="min-width: 100%; background-color: black; padding-top: 10%; padding-bottom: 10%;">
-			<div class="social row" style="color: white; text-align: center;">
-				<p class="instagram col-sm-1 ml-auto">INSTAGRAM</p>
-				<p class="youtube col-sm-1 mr-auto">YOUTUBE</p>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="row">
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/6.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/3.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/4.jpg" class="img-fluid"/>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="mobile" class="col-sm-6">
-					<div class="row">
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="photo/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script src="js/rellax.js"></script>
+		{% include 'footer.html' %}
+		<script src="/static/js/rellax.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script>
     		var rellax = new Rellax('.rellax', {

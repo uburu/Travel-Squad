@@ -41,7 +41,7 @@ class Command(BaseCommand):
             post.creationDate = fake.date(pattern="%Y-%m-%d", end_datetime=None)
             post.departureDate = fake.date(pattern="%Y-%m-%d", end_datetime=None)
             post.returnDate = fake.date(pattern="%Y-%m-%d", end_datetime=None)
-            post.shortDescription = fake.text(max_nb_chars=700, ext_word_list=None)
+            post.shortDescription = fake.text(max_nb_chars=100, ext_word_list=None)
             post.image = random.choice(photos)
             post.id = i
             post.save()

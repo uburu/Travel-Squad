@@ -1,5 +1,5 @@
 {% for post in columns %}
-<a href="{% url 'post' post.id %}">
+<a href="{% url 'post' post.id %}" style="text-decoration: none; color: white;">
     <div class="slide-" style="background-image: url({{ post.image.url }});">
         <div class="thumbnail container">
             <div class="row h-100">

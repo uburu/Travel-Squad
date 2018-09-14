@@ -21,6 +21,7 @@
 					<li>
 						<object class="icon" type="image/svg+xml" data="/static/img/instagram.svg"></object>
 					</li>
+					<!-- <li><a href="https://www.instagram.com/st.travel_squad/">hui</a></li> -->
 					<li>
 						<object class="icon" type="image/svg+xml" data="/static/img/youtube.svg"></object>
 					</li>
@@ -39,17 +40,17 @@
 		<div class="container" style="min-width: 100%;">
 			<div class="row" style="overflow-y: hidden;">
 				<div class="col-lg my-auto p-5" style="text-align: center; color: white;">
-					<a href="{% url 'gallery' %}">
+					<a href="{% url 'gallery' %}" style="color: white; text-decoration: none;">
 						<p class="h1" style="overflow-y: hidden;">GALLERY</p>
-						<p>Projects overwrite chetotam</p>
+						<p>Projects oveview</p>
 					</a>
 				</div>
-				<div class="col-lg my-auto p-5" style="text-align: center;">
+				<div class="col-lg-1 my-auto p-5" style="text-align: center;">
 					<img height="400" width="1" src="/static/img/thumb_white.png"/>
 				</div>
 				<div class="bars col-lg my-auto p-5" style="text-align: center; color: white;">
-					<p class="h1" style="overflow-y: hidden;">ABOUT</p>
-					<p>Travel Squad</p>
+					<p class="h1" style="overflow-y: hidden;">STORIES</p>
+					<p>Of Travel Squad</p>
 				</div>
 			</div>
 		</div>
@@ -57,46 +58,7 @@
 		<div class="feed container h-100">
 			<div class="row" style="padding-top: 10%; padding-bottom: 10%; min-height: 100%;">
 				<div id="feed" class="center col-lg p-0">
-					<div class="slide-1">
-						<div class="thumbnail container">
-							<div class="row h-100">
-								<div class="col-lg mt-auto">
-									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
-									<p>Краткое описание события или переход</br> на другое событие</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="slide-2">
-						<div class="thumbnail container">
-							<div class="row h-100">
-								<div class="col-lg mt-auto">
-									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
-									<p>Краткое описание события или переход</br> на другое событие</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="slide-3">
-						<div class="thumbnail container">
-							<div class="row h-100">
-								<div class="col-lg mt-auto">
-									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
-									<p>Краткое описание события или переход</br> на другое событие</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="slide-4">
-						<div class="thumbnail container">
-							<div class="row h-100">
-								<div class="col-lg mt-auto">
-									<p class="h1" style="overflow-y: hidden;">Заголовок</p>
-									<p>Краткое описание события или переход</br> на другое событие</p>
-								</div>
-							</div>
-						</div>
-					</div>
+					{% include '_shortArticles_list.html' %}
 				</div>
 			</div>
 		</div>
@@ -124,62 +86,8 @@
 			</div>
 		</div>
 
-		<div class="container" style="min-width: 100%; background-color: black; padding-top: 10%; padding-bottom: 10%;">
-			<div class="social row" style="color: white; text-align: center;">
-				<p class="instagram col-sm-1 ml-auto">INSTAGRAM</p>
-				<p class="youtube col-sm-1 mr-auto">YOUTUBE</p>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="row">
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/6.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/3.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/4.jpg" class="img-fluid"/>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="mobile" class="col-sm-6">
-					<div class="row">
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-						<div class="col-3 p-0">
-							<a href="#" class="photo">
-								<img src="/static/img/1.jpg" class="img-fluid"/>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% include 'footer.html' %}
+
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="/static/js/slick/slick.min.js"></script>
 		<script>
@@ -192,34 +100,36 @@
 				feed.remove();
 				var newFeed = document.createElement('div');
 				newFeed.className = "center col-lg p-0";
-				for(var i = 0; i < 4; i++)
-				{
+				{% for post in columns %}
 					var elem = document.createElement('div');
-					var str = "slide-"+ String(i+1) +" thumbnail col-lg p-4";
+					var a = document.createElement('a');
+					a.href = "{% url 'post' post.id %}";
+					var str = "slide- thumbnail col-lg p-5";
 					elem.className = str;
-					elem.innerHTML = "<h1>Заголовок</h1><p>Краткое описание события или переход</br> на другое событие</p>"
-					newFeed.appendChild(elem);
-				}
+					elem.style = "background-image: url({{ post.image.url }}); overflow: hidden; text-align: center;";
+					elem.innerHTML = "<h1>{{ post.title }}</h1><p>{{ post.shortDescription }}</p>";
+					a.appendChild(elem);
+					newFeed.appendChild(a);
+				{% endfor %}
 
 				feedParent.appendChild(newFeed);
 
 				document.getElementById("mobile").remove();
 			}
-			else
+			else 
 			{
 				$(".center").slick({
-	        		infinite: true,
-	        		centerMode: true,
-	        		slidesToShow: 3,
-	        		adaptiveHeight: true,
-	        		arrows: false,
-	        		centerPadding: '100px',
-	        		variableWidth: true,
-	        		autoplay: true,
-	        		autoplaySpeed: 5000,
-      			});
+		        	infinite: true,
+		        	centerMode: true,
+		        	slidesToShow: 3,
+		        	adaptiveHeight: true,
+		        	arrows: false,
+		        	centerPadding: '100px',
+		        	variableWidth: true,
+		        	autoplay: true,
+		        	autoplaySpeed: 5000,
+	      			});
 			}
-
 			if(document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1240) {
 				var elem = document.body.childNodes[7];
 				elem.classList.remove("h-100");

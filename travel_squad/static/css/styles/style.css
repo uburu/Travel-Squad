@@ -70,26 +70,7 @@ li {
   z-index: -1000;
 }
 
-.slide-1 {
-  background-image: url(../photo/1.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
-.slide-2 {
-  background-image: url(../photo/7.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
-.slide-3 {
-  background-image: url(../photo/3.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
-.slide-4 {
-  background-image: url(../photo/4.jpg);
+.slide- {
   background-size: 100%;
   background-repeat: no-repeat;
 }
