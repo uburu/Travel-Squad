@@ -148,27 +148,6 @@ def gallery(request): # пока без аякса
 
     return render(request, 'gallery.html', context)
 
-def photos_by_tag(request, tag_name):
-    photos_by_tag = _paginate(Photos.objects.all_photos_by_tag(tag_name), request)
-
-    row1 = photos_by_tag[:3]
-    row2 = photos_by_tag[3:6]
-    row3 = photos_by_tag[6:9]
-    row4 = photos_by_tag[9:12]
-
-    tags = Tags.objects.all_tags()
-
-    context = {
-        'all_photos': photos_by_tag,
-        'row_1': row1,
-        'row_2': row2,
-        'row_3': row3,
-        'row_4': row4,
-        'last_query': '',
-        'tags': tags
-    }
-    return render(request, 'gallery.html', context)
-
 def stories(request):
     all_stories = _paginate(Article.objects.all_articles(), request)
     tags = Tags.objects.all_tags()
@@ -190,6 +169,30 @@ def stories(request):
     'tags': tags
     }
     return render(request, 'stories.html', context)
+
+def about(request):
+    return render(request, 'aboutus.html')
+
+def photos_by_tag(request, tag_name):
+    photos_by_tag = _paginate(Photos.objects.all_photos_by_tag(tag_name), request)
+
+    row1 = photos_by_tag[:3]
+    row2 = photos_by_tag[3:6]
+    row3 = photos_by_tag[6:9]
+    row4 = photos_by_tag[9:12]
+
+    tags = Tags.objects.all_tags()
+
+    context = {
+        'all_photos': photos_by_tag,
+        'row_1': row1,
+        'row_2': row2,
+        'row_3': row3,
+        'row_4': row4,
+        'last_query': '',
+        'tags': tags
+    }
+    return render(request, 'gallery.html', context)
 
 def stories_by_tag(request, tag_name):
     all_stories = _paginate(Article.objects.all_articles_by_tag(tag_name), request)
