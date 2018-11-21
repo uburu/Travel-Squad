@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.search import SearchVectorField
 
+
 # Create your models here.
 
 
@@ -10,7 +11,6 @@ class TagsManager(models.Manager):
 
 
 class Tags(models.Model):
-
     class Meta:
         db_table = 'tags'
         verbose_name = 'tag'
@@ -32,7 +32,6 @@ class ArticleManager(models.Manager):
 
 
 class Article(models.Model):
-
     class Meta:
         db_table = 'post'  # название таблицы
         verbose_name = 'article'
@@ -42,9 +41,11 @@ class Article(models.Model):
     objects = ArticleManager()
     title = models.CharField('Название статьи', max_length=256)
     text = models.TextField('Текст статьи', default=None)
+    location = models.CharField('Локация', max_length=30)
     shortDescription = models.TextField('Краткое описание', max_length=150, default=None)
-    creationDate = models.DateField(auto_now_add=True) # дата создания поста
-    image = models.ImageField('Титульная фотография', upload_to='photos/', default=None) # если будет одна фотка в посте то ее удобнее добавлять сразу со страницы поста
+    creationDate = models.DateField(auto_now_add=True)  # дата создания поста
+    image = models.ImageField('Титульная фотография', upload_to='photos/',
+                              default=None)  # если будет одна фотка в посте то ее удобнее добавлять сразу со страницы поста
     departureDate = models.DateField('Дата начала путешествия', default=None)
     returnDate = models.DateField('Дата окончания путешествия', default=None)
     tags = models.ManyToManyField(Tags)
@@ -53,17 +54,21 @@ class Article(models.Model):
         return self.title
 
 
-
 class PhotosManager(models.Manager):
     def all_photos(self):
         return self.all()
+
     def all_photos_by_tag(self, tag_name):
         return self.filter(tags__name=tag_name)
 
+    def get_photo_by_id(self, id):
+        return self.get(id=id)
+
+    def get_photo_by_post(self, post):
+        return self.filter(post=post)
 
 
 class Photos(models.Model):
-
     class Meta:
         db_table = 'photos'
         verbose_name = 'photo'

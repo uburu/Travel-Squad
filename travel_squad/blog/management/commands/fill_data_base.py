@@ -44,6 +44,7 @@ class Command(BaseCommand):
             post.shortDescription = fake.text(max_nb_chars=100, ext_word_list=None)
             post.image = random.choice(photos)
             post.id = i
+            post.location = fake.sentence(nb_words=1, variable_nb_words=True, ext_word_list=None)
             post.save()
 
             # заполениение поля ManyToManyField() должно происходить после сохранения записи в базу (после post.save())

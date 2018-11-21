@@ -1,40 +1,39 @@
+{% load static %}
+
 <!doctype>
 <html>
 	<head>
 		<meta chrset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Travel Squad</title>
 
-		<link rel="stylesheet" href="/static/css/gallery.css">
-		<link rel="stylesheet" href="/static/css/media_gallery.css">
-		<link rel="stylesheet" href="/static/css/media.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static '/css/gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/media_gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/media_gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
 	</head>
 	<body>
-
 		{% include 'header.html' %}
 		<div style="background-color: white;">
 			<div class="container">
 				<div class="row">
 					{% for photo in row_1 %}
-						<div class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></div>
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
 					{% endfor %}
 				</div>
 				<div class="row">
 					{% for photo in row_2 %}
-						<div class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></div>
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
 					{% endfor %}
 				</div>
 				<div class="row">
 					{% for photo in row_3 %}
-						<div class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></div>
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
 					{% endfor %}
 				</div>
 				<div class="row">
 					{% for photo in row_4 %}
-						<div class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></div>
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
 					{% endfor %}
 				</div>
 				{% include "pagination.html" with object_list=all_photos url_query=last_query %}
@@ -42,8 +41,8 @@
 		</div>
 		{% include 'footer.html' %}
 
-		<script src="/static/js/rellax.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{% static '/js/rellax.js' %}"></script>
+		<script src="{% static '/js/jquery/jquery.min.js' %}"></script>
 		<!-- Для 1024px добавить h-100 контейнеру с фотками -->
 		<script>
     		var rellax = new Rellax('.rellax', {
