@@ -1,0 +1,113 @@
+/* @media */
+
+/* monitors and laptops */
+@media screen and (min-width: 1240px)  {
+  .title {
+    font-size: 20px;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .list {
+    bottom: 40px;
+    left: 70px;
+  }
+
+  .scroll {
+    text-align: center;
+    min-width: 100%;
+    bottom: 20px;
+  }
+
+  .ava {
+    height: 200px;
+    width: 200px;
+  }
+
+  .instagram {
+    text-align: right;
+    border-right: 1px solid white;
+  }
+
+  .youtube {
+    text-align: left;
+    border: none;
+  }
+
+  .social {
+    margin-bottom: 5%;
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 1024px) and (max-width: 1240px)  {
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .list {
+    top: 50px;
+    left: 30px;
+  }
+
+  .scroll {
+    text-align: center;
+    min-width: 100%;
+    bottom: 20px;
+  }
+
+  .ava {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 10px;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .list {
+    top: 30px;
+  }
+
+  .scroll {
+    left: 46%;
+    bottom: 20px;
+  }
+
+  .ava {
+    height: 100px;
+    width: 100px;
+  }
+
+  .instagram {
+    text-align: center;
+    border-right: 1px solid white;
+    /*border: none;*/
+  }
+
+  .youtube {
+    text-align: center;
+    border: none;
+  }
+
+  .thumbnail {
+    height: 30% !important;
+  }
+
+  h1 {
+    font-size: 90% !important;
+  }
+
+}

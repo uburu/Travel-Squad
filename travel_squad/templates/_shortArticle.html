@@ -1,0 +1,22 @@
+<article class="card mb-4">
+    <header class="card-header">
+        <div class="card-meta">
+            <a href="{% url 'post' post.id %}">
+                <time class="timeago" datetime="2017-10-26 20:00" data-tid="1"> {{ post.departureDate }} - {{ post.returnDate }}</time>
+            </a>
+            в
+            <a href="{% url 'post' post.id %}">Путешествие</a>
+        </div>
+        <a href="{% url 'post' post.id %}">
+            <h4 class="card-title">{{ post.title }}</h4>
+        </a>
+    </header>
+    <a href="{% url 'post' post.id %}">
+        <img class="card-img" src="{{ post.image.url }}" alt="">
+    </a>
+    <div class="card-body">
+        <p class="card-text">
+            {{ post.shortDescription }}
+        </p>
+    </div>
+</article>

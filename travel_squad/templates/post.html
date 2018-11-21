@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <main role="main" class="logo rellax col-lg-8" data-rellax-speed="4">
+            <h1 class="title animated fadeInUp"> {{ post.title }} </h1>
+        </main>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <img src="{{ post.image.url }}" class="img-fluid rellax" data-rellax-speed="8" data-rellax-percentage="-0.1">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 mr-auto">
+                <h1 class="place rellax ml-5" data-rellax-speed="-4" data-rellax-percentage="0.5" style="z-index: -10; font-size: 100px;color: #f0f0f0;">{{ post.location }}</h1>
+            </div>
+            <div class="col-lg-5 ml-auto">
+                <img src="/static/img/compass.png" class="rellax img-fluid" data-rellax-speed="5" data-rellax-percentage="0">
+                <h3 class="coordinates rellax ml-auto" data-rellax-speed="8" data-rellax-percentage="0.1" style="font-size:px; color:451fe7; z-index: -100;">53°02′39″N 158°39′02″W</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <p class="mb-5">{{ post.text }}</p>
+                {% for photo in photos %}
+                    <a href="{% url 'photo' photo.id %}"><img class="w-100 mb-5" src="{{ photo.img.url }}"/></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static '/js/rellax.js' %}"></script>
+    <script src="{% static '/js/jquery/jquery.min.js' %}"></script>
+    <script>
+        var rellax = new Rellax('.rellax', {
+        });
+        
+        var wnd = $(window), opacityControlPlace = $('.place'), opacityControlCoord = $('.coordinates');
+        wnd.scroll(function() {
+        	var top = wnd.scrollTop()
+        	var opacityPlace = top > 500 ? 1 : top * 2 / 1000;
+        	var opacityCoord = top > 500 ? 1 : top * 2 / 1000;
+        
+        	opacityControlPlace.css('opacity', opacityPlace);
+        	opacityControlCoord.css('opacity', opacityCoord);
+        });
+    </script>
+</body>
+
+{% endblock %}

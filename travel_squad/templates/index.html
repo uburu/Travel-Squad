@@ -1,0 +1,133 @@
+{% load static %}
+
+<!doctype>
+<html>
+    <head>
+        <meta chrset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Travel Squad</title>
+
+        <link rel="stylesheet" href="{% static '/css/styles/style.css' %}">
+        <link rel="stylesheet" href="{% static '/css/styles/media.css' %}">
+        <link rel="stylesheet" href="{% static '/css/styles/animate.css' %}">
+        <link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static '/css/slick/slick.css' %}"/>
+        <link rel="stylesheet" href="{% static '/css/slick/slick.css' %}"/>
+    </head>
+    <body>
+        <div class="main container">
+            <div class="row h-100">
+                <ul class="list">
+                    <li>
+                        <a href="https://www.instagram.com/st.travel_squad/"><img src="/static/img/instagram.png" class="icon"/></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/st.travel_squad/"><img src="/static/img/youtube.png" class="icon"/></a>
+                    </li>
+                </ul>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-9 my-auto mx-auto">
+                    <img src="/static/img/logo_black.png" class="img-fluid logo" alt>
+                    <p class="title">Это был лишь вопрос времени.</p>
+                </div>
+                <div class="scroll">
+                    <object class="icon" type="image/svg+xml" data="/static/img/down-arrow.svg"></object>
+                </div>
+            </div>
+        </div>
+        <img class="b-i img-fluid" src="/static/img/10.jpg" style="background-color: black;"/>
+        <div class="container" style="min-width: 100%;">
+            <div class="row" style="overflow-y: hidden;">
+                <div class="col-lg my-auto p-5" style="text-align: center; color: white;">
+                    <a href="{% url 'gallery' %}" style="color: white; text-decoration: none;">
+                        <p class="h1" style="overflow-y: hidden;">GALLERY</p>
+                        <p>Projects overview</p>
+                    </a>
+                </div>
+                <div class="col-lg-1 my-auto p-5" style="text-align: center;">
+                    <img height="400" width="1" src="/static/img/thumb_white.png"/>
+                </div>
+                <div class="bars col-lg my-auto p-5" style="text-align: center; color: white;">
+                    <a href="{% url 'stories' %}" style="color: white; text-decoration: none;">
+                        <p class="h1" style="overflow-y: hidden;">STORIES</p>
+                        <p>Of Travel Squad</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="feed container h-100">
+            <div class="row" style="padding-top: 10%; padding-bottom: 10%; min-height: 100%;">
+                <div id="feed" class="center col-lg p-0">
+                    {% include '_shortArticles_list.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="persons container m-0" style="padding-bottom: 10%;">
+            <div class="row">
+                <div class="col-lg ml-5 mr-5">
+                    <img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/ivan.jpg" alt="photo">
+                    <p class="pers-information mb-1 h4" style="overflow-y: hidden;">Иван</p>
+                    <p class="pers-information"><b>Фотограф</b></p>
+                    <p class="pers-information">Познакомься, это — Ваня. Он волк в душе, поэтому всегда стремится к свободе мысли и передвижений.</p>
+                </div>
+                <div class="col-lg ml-5 mr-5">
+                    <img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/alexandra.jpg" alt="photo">
+                    <p class="pers-information mb-1 h4" style="overflow-y: hidden;">Александра</p>
+                    <p class="pers-information"><b>Не фотограф</b></p>
+                    <p class="pers-information">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquet tincidunt urna nec rhoncus. </p>
+                </div>
+                <div class="col-lg ml-5 mr-5">
+                    <img class="ava rounded-circle mx-auto d-block mb-4" src="/static/img/maksim.jpg" alt="photo">
+                    <p class="pers-information mb-1 h4" style="overflow-y: hidden;">Максим</p>
+                    <p class="pers-information"><b>Второй фотограф</b></p>
+                    <p class="pers-information">Это Максим. Максимально целеустремлённый и легко найдет общий язык даже с камчатским медведем.</p>
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+        
+        <script src="{% static '/js/jquery/jquery.min.js' %}"></script>
+        <script src="{% static '/js/slick/slick.min.js' %}"></script>
+        <script>
+            if(document.documentElement.clientWidth < 768) {
+                var elem = document.body.childNodes[7];
+                elem.classList.remove("h-100");
+                var feed = document.getElementById("feed");
+                var feedParent = feed.parentNode;
+                feed.remove();
+                var newFeed = document.createElement('div');
+                newFeed.className = "center col-lg p-0";
+                {% for post in columns %}
+	                var elem = document.createElement('div');
+	                var a = document.createElement('a');
+	                a.href = "{% url 'post' post.id %}";
+	                var str = "slide- thumbnail col-lg p-5";
+	                elem.className = str;
+	                elem.style = "background-image: url({{ post.image.url }}); overflow: hidden; text-align: center;";
+	                elem.innerHTML = "<h1>{{ post.title }}</h1><p>{{ post.shortDescription }}</p>";
+	                a.appendChild(elem);
+	                newFeed.appendChild(a);
+                {% endfor %}
+
+                feedParent.appendChild(newFeed);
+                document.getElementById("mobile").remove();
+            } else {
+                $(".center").slick({
+	                infinite: true,
+	                centerMode: true,
+	                slidesToShow: 3,
+	                adaptiveHeight: true,
+	                arrows: false,
+	                centerPadding: '100px',
+	                variableWidth: true,
+	                autoplay: true,
+	                autoplaySpeed: 5000,
+	            });
+            }
+            if(document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1240) {
+	            var elem = document.body.childNodes[7];
+	            elem.classList.remove("h-100");
+	            elem.childNodes[1].style = "padding-top: 10%; padding-bottom: 10%;";
+	        }
+        </script>
+    </body>
+</html>

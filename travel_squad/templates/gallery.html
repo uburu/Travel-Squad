@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype>
+<html>
+	<head>
+		<meta chrset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Travel Squad</title>
+
+		<link rel="stylesheet" href="{% static '/css/gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/media_gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/media_gallery.css' %}">
+		<link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
+	</head>
+	<body>
+		{% include 'header.html' %}
+		<div style="background-color: white;">
+			<div class="container">
+				<div class="row">
+					{% for photo in row_1 %}
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
+					{% endfor %}
+				</div>
+				<div class="row">
+					{% for photo in row_2 %}
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
+					{% endfor %}
+				</div>
+				<div class="row">
+					{% for photo in row_3 %}
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
+					{% endfor %}
+				</div>
+				<div class="row">
+					{% for photo in row_4 %}
+						<a href="{% url 'photo' photo.id %}" class="photo col-lg m-5 p-0" style="background-image: url({{ photo.img }});"></a>
+					{% endfor %}
+				</div>
+				{% include "pagination.html" with object_list=all_photos url_query=last_query %}
+			</div>
+		</div>
+		{% include 'footer.html' %}
+
+		<script src="{% static '/js/rellax.js' %}"></script>
+		<script src="{% static '/js/jquery/jquery.min.js' %}"></script>
+		<!-- Для 1024px добавить h-100 контейнеру с фотками -->
+		<script>
+    		var rellax = new Rellax('.rellax', {
+      		});
+
+      		if(document.documentElement.clientWidth < 768)
+				document.getElementById("mobile").remove();
+    	</script>
+	</body>
+</html>

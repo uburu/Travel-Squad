@@ -1,0 +1,13 @@
+<div class="col-md-3 ml-auto">
+    <aside class="sidebar sidebar-sticky">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">Тэги</h4>
+                {% for tag in tags %}
+                    <!-- класс tag нужен для getElementsByClassName -->
+                    <a class="btn btn-light btn-sm mb-1 tag" href="{% url 'photos_by_tag' tag.name %}">{{ tag.name }}</a><br>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
+</div>

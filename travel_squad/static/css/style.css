@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Jura');
+
+* {
+  overflow-x: hidden;
+}
+
+.main {
+	min-width: 100%;
+	background-color: white;
+}
+
+.logo {
+  text-align: center;
+}
+
+.title {
+  font-family: 'Jura', sans-serif;
+  text-align: center;
+  -webkit-animation-delay: 1s;
+}
+
+.scroll {
+  position: absolute;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin-bottom: 25px;
+}
+
+.list {
+	position: absolute;
+  z-index: 10000;
+}
+
+.menu {
+	font-family: 'Roboto', sans-serif !important;
+/*	font-size: 20px !important;*/
+	color: white;
+  background: none !important;
+  min-width: 100%;
+}
+
+.b-i {
+	top: 10px;
+	z-index: -200;
+	width: 100%;
+	height: 100% !important;
+	position: fixed;
+}
+
+/*------------------*/
+.bars {
+	text-align: center;
+}
+
+.feed {
+  min-width: 100%;
+  background-color: white;
+}
+
+.slick-slide {
+  max-height: 460px;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 700px;
+  z-index: -1000;
+}
+
+.slide-1 {
+  background-image: url(../photo/1.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.slide-2 {
+  background-image: url(../photo/7.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.slide-3 {
+  background-image: url(../photo/3.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.slide-4 {
+  background-image: url(../photo/4.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.thumbnail {
+  color: white;
+}
+
+.persons {
+  min-width: 100%;
+  background-color: white;
+}
+
+.pers-information {
+  text-align: center;
+}
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+/*ANIMATION*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
